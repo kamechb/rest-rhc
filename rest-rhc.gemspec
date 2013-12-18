@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 Gem::Specification.new do |s|
   spec_file = IO.read(File.expand_path("../client.spec", __FILE__))
 
-  s.name         = %q{rhc}
+  s.name         = %q{rest-rhc}
   s.version      = spec_file.match(/^Version:\s*(.*?)$/mi)[1].chomp
 
   s.authors      = %q{Red Hat}

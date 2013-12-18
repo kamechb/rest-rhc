@@ -182,7 +182,8 @@ class Hash
     end
     self
   end
-  def slice!(*args)
+  # use slice_ret_arr! instead of slice!, slice! conflict with rails slice!
+  def slice_ret_arr!(*args)
     s = []
     args.inject([]) do |a, k|
       s << [k, delete(k)] if has_key?(k)

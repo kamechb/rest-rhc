@@ -4,7 +4,7 @@ Usage: rhc [--help] [--version] [--debug] <command> [<args>]
 
 <%
 remaining = Hash[commands.dup.select{ |name, command| not command.summary.blank? }]
-basic = remaining.slice!('setup', 'create-app', 'apps', 'cartridges', 'add-cartridge', 'set-env', 'logout')
+basic = remaining.slice_ret_arr!('setup', 'create-app', 'apps', 'cartridges', 'add-cartridge', 'set-env', 'logout')
 remaining.delete_if{ |name, command| alias?(name) }
 begin -%>
 Getting started:
@@ -12,7 +12,7 @@ Getting started:
 <% end unless basic.empty? %>
 <%
 
-debugging = remaining.slice!('app restart', 'app show', 'tail', 'port-forward', 'threaddump', 'snapshot', 'git-clone')
+debugging = remaining.slice_ret_arr!('app restart', 'app show', 'tail', 'port-forward', 'threaddump', 'snapshot', 'git-clone')
 begin -%>
 Working with apps:
 <%= table(debugging.map{ |arr| arr[1] = arr[1].summary || arr[1].description; arr }, table_args('  ', 18)).join("\n") %>
